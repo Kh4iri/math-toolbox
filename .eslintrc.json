@@ -1,0 +1,49 @@
+{
+	"root": true,
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:svelte/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaVersion": 2020,
+		"extraFileExtensions": [
+			".svelte"
+		]
+	},
+	"env": {
+		"browser": true,
+		"es2017": true,
+		"node": true
+	},
+	"overrides": [
+		{
+			"files": [
+				"*.svelte"
+			],
+			"parser": "svelte-eslint-parser",
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser"
+			}
+		}
+	],
+	"rules": {
+		// Personal rules
+		"arrow-spacing": ["warn", { "before": true, "after": true }],
+		"comma-dangle": ["error", "never"],
+		"comma-spacing": "error",
+		"comma-style": "error",
+		"semi": ["error", "always"],
+		"quotes": ["error", "single"],
+		"no-var": "error",
+		"prefer-const": "error",
+		"spaced-comment": "error",
+		"no-shadow": ["error", { "allow": ["err", "resolve", "reject"] }],
+		"no-trailing-spaces": ["error"]
+	}
+}
