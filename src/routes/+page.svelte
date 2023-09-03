@@ -33,8 +33,8 @@
   <title>Data Statistics</title>
 </svelte:head>
 
-<div class="container mx-auto max-w-lg px-4">
-  <h1 class="mt-6 text-5xl text-center text-accent">Data Statistics</h1>
+<div class="container mx-auto max-w-lg px-4 py-6">
+  <h1 class="text-5xl text-center text-accent">Data Statistics</h1>
   <p class="text-center mb-3">
     Calculator for Mean, Median, Mode, Quartile, and Decile.
   </p>
