@@ -33,10 +33,12 @@
   <title>Data Statistics</title>
 </svelte:head>
 
-<div class="container mx-auto max-w-lg px-4 py-6">
-  <h1 class="text-5xl text-center text-accent">Data Statistics</h1>
+<div class="container mx-auto max-w-xl px-4 py-6">
+  <h1 class="text-5xl text-center text-accent mb-1">Data Statistics</h1>
   <p class="text-center mb-3">
-    Calculator for Mean, Median, Mode, Quartile, and Decile.
+    This open-source project simplifies statistical calculations for data enthusiasts, students,
+    and everyone else. It's a quick tool I created to make working with data easier. Check it out on
+    <a href="https://github.com/Kh4iri/data-statistics-calculator" class="link link-accent" target="_blank">Github</a>
   </p>
 
   <!-- Data Input -->
