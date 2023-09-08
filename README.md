@@ -12,6 +12,7 @@ This is an open-source tool I whipped up during my free time, meant to simplify 
 - **Mode**: Identify the most frequently occurring value in your dataset.
 - **Quartile**: Compute quartile values (Q1, Q2, Q3) to understand data distribution.
 - **Decile**: Calculate deciles (D1 to D9) to analyze percentiles.
+- **Percentile**: Calculate specific percentiles (0th to 100th) to understand your data's distribution further.
 
 In addition to these core features, this website throws in some extra goodies, including:
 
