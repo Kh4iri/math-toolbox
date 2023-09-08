@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { getDecile, getMean, getMedian, getMode, getQuartiles } from "$lib";
+  import { getMean, getMedian, getMode } from "$lib";
+  import DecileStats from "./DecileStats.svelte";
+  import QuartileStats from "./QuartileStats.svelte";
   import Stat from "./Stat.svelte";
   import StatBlock from "./StatBlock.svelte";
 
   let inputString = "2, 2, 3, 5, 1";
-  let inputDecile = 5;
   let dataErrors: string[] = [];
   let data: number[];
 
@@ -25,8 +26,6 @@
   $: sum = data.length > 0 ? data.reduce((prev, curr) => prev + curr) : 0;
   $: mean = getMean(data);
   $: median = getMedian(sortedData);
-  $: quartiles = getQuartiles(sortedData);
-  $: decile = getDecile(sortedData, inputDecile);
 </script>
 
 <svelte:head>
@@ -95,24 +94,8 @@
   </StatBlock>
 
   <div class="divider">Quartiles</div>
-
-  <StatBlock>
-    <Stat name="Q1" result={quartiles.Q1.result} formula={quartiles.Q1.formula} /><br>
-    <Stat name="Q2" result={quartiles.Q2.result} formula={quartiles.Q2.formula} /><br>
-    <Stat name="Q3" result={quartiles.Q3.result} formula={quartiles.Q3.formula} /><br>
-  </StatBlock>
+  <QuartileStats {sortedData} />
 
   <div class="divider">Deciles</div>
-
-  <input type="range" bind:value={inputDecile} min="1" max="9" class="range">
-  <div class="w-full flex justify-between text-xs px-2 mb-3">
-    {#each [1,2,3,4,5,6,7,8,9] as n}
-      <span>{n}</span>
-    {/each}
-  </div>
-  <StatBlock>
-    <Stat name="Position" result={decile.position} /><br>
-    <Stat name="Remainder" result={decile.remainder} /><br>
-    <Stat name="Result" result={decile.result} formula={decile.formula} />
-  </StatBlock>
+  <DecileStats {sortedData} />
 </div>

@@ -3,6 +3,7 @@
 type ResultInfo = { formula: string, result: number }
 type Quartiles = { Q1: ResultInfo, Q2: ResultInfo, Q3: ResultInfo }
 type Decile = ResultInfo & { position: number, remainder: number }
+type Percentile = Decile
 
 export function getMean(numbers: number[]): ResultInfo {
   if (numbers.length == 0)
@@ -106,6 +107,41 @@ export function getDecile(sortedNumbers: number[], decileNumber: number): Decile
   }
 
   // Calculate the decile value using linear interpolation.
+  const result = sortedNumbers[currIndex] + remainder * (sortedNumbers[nextIndex] - sortedNumbers[currIndex]);
+  return {
+    position,
+    remainder,
+    result,
+    formula
+  };
+}
+
+export function getPercentile(sortedNumbers: number[], percentileNumber: number): Percentile {
+  if (percentileNumber < 0 || percentileNumber > 100)
+    throw Error('Percentile must be between 0 and 100.');
+
+  // Calculate the position of the percentile.
+  const position = (percentileNumber * (sortedNumbers.length + 1)) / 100;
+  const remainder = position - Math.floor(position);
+  const currIndex = Math.floor(position) - 1;
+  const nextIndex = currIndex + 1;
+
+  let formula = sortedNumbers
+    .map((v, i) => (i === currIndex) ? `<span class="text-success">${v}</span>` : `${v}`)
+    .join(', ');
+  formula = `[${formula}] =`;
+
+  // Check if the index is within the valid range.
+  if (isIndexOutOfRange(sortedNumbers, currIndex) || isIndexOutOfRange(sortedNumbers, nextIndex)) {
+    return {
+      position,
+      remainder,
+      result: NaN, // Percentile position is out of range.
+      formula
+    };
+  }
+
+  // Calculate the percentile value using linear interpolation.
   const result = sortedNumbers[currIndex] + remainder * (sortedNumbers[nextIndex] - sortedNumbers[currIndex]);
   return {
     position,
