@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getMean, getMedian, getMode } from "$lib";
   import DecileStats from "./DecileStats.svelte";
+  import PercentileStats from "./PercentileStats.svelte";
   import QuartileStats from "./QuartileStats.svelte";
   import Stat from "./Stat.svelte";
   import StatBlock from "./StatBlock.svelte";
@@ -98,4 +99,7 @@
 
   <div class="divider">Deciles</div>
   <DecileStats {sortedData} />
+
+  <div class="divider">Percentiles</div>
+  <PercentileStats {sortedData} />
 </div>
