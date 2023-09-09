@@ -7,6 +7,11 @@
   let value = 50;
 
   $: percentile = getPercentile(sortedData, value);
+  $: value = clamp(value, 0, 100)
+
+  function clamp(num: number, min: number, max: number) {
+    return Math.min(Math.max(num, min), max);
+  }
 </script>
 
 <div class="flex items-center gap-4 mb-3">
