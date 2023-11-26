@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { getQuartiles } from "$lib";
-  import Stat from "./Stat.svelte";
-  import StatBlock from "./StatBlock.svelte";
+  import { getQuartiles } from '$lib';
+  import Stat from './Stat.svelte';
+  import StatBlock from './StatBlock.svelte';
 
-  export let sortedData: number[]
+  export let sortedData: number[];
   $: quartiles = getQuartiles(sortedData);
 </script>
 

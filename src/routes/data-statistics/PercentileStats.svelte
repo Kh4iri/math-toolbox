@@ -1,17 +1,13 @@
 <script lang="ts">
-  import { getPercentile } from "$lib";
-  import Stat from "./Stat.svelte";
-  import StatBlock from "./StatBlock.svelte";
+  import { clamp, getPercentile } from '$lib';
+  import Stat from './Stat.svelte';
+  import StatBlock from './StatBlock.svelte';
 
-  export let sortedData: number[]
+  export let sortedData: number[];
   let value = 50;
 
   $: percentile = getPercentile(sortedData, value);
-  $: value = clamp(value, 0, 100)
-
-  function clamp(num: number, min: number, max: number) {
-    return Math.min(Math.max(num, min), max);
-  }
+  $: value = clamp(value, 0, 100);
 </script>
 
 <div class="flex items-center gap-4 mb-3">

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { getDecile } from "$lib";
-  import Stat from "./Stat.svelte";
-  import StatBlock from "./StatBlock.svelte";
+  import { getDecile } from '$lib';
+  import Stat from './Stat.svelte';
+  import StatBlock from './StatBlock.svelte';
 
-  export let sortedData: number[]
+  export let sortedData: number[];
   let value = 5;
 
   $: decile = getDecile(sortedData, value);
@@ -11,7 +11,7 @@
 
 <input type="range" bind:value min="1" max="9" class="range">
 <div class="w-full flex justify-between text-xs px-2 mb-3">
-  {#each [1,2,3,4,5,6,7,8,9] as n}
+  {#each [1, 2, 3, 4, 5, 6, 7, 8, 9] as n}
       <span>{n}</span>
   {/each}
 </div>

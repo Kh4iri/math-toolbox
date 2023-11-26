@@ -1,18 +1,17 @@
-# Data Statistics Calculator (Web)
+# Khairi's Math Toolbox
 
-[![Github Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://kh4iri.github.io/data-statistics-calculator/)
-[![View on Stackblitz](https://img.shields.io/badge/View_On_Stackblitz-fff?style=for-the-badge&logo=Stackblitz&logoColor=1389FD)](https://stackblitz.com/edit/data-statistics-calculator)
+[![Github Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://kh4iri.github.io/math-toolbox/)
+[![View on Stackblitz](https://img.shields.io/badge/View_On_Stackblitz-fff?style=for-the-badge&logo=Stackblitz&logoColor=1389FD)](https://stackblitz.com/edit/math-toolbox)
 
-This is an open-source tool I whipped up during my free time, meant to simplify statistical calculations and give data enthusiasts, students, and anyone else a helping hand. It's a quick little project I put together because I wanted an easier way to work with data, and I thought you might too!
+Hey! So, I was in school learning math, and it hit me: I could totally make life easier with a little coding magic. As luck would have it, I'm also a web developer, so I whipped up this sweet toolbox. It's my way of making stats and number crunching a piece of cake.
+
+This is an open-source toolbox I made during my free time, meant to simplify statistical calculations and give data enthusiasts, students, and anyone else a helping hand. It's a quick little project I put together because I wanted an easier way to work with data, and I thought you might too!
 
 ## Features
 
-- **Mean**: Calculate the average value of your dataset.
-- **Median**: Find the middle value (50th percentile) of your data.
-- **Mode**: Identify the most frequently occurring value in your dataset.
-- **Quartile**: Compute quartile values (Q1, Q2, Q3) to understand data distribution.
-- **Decile**: Calculate deciles (D1 to D9) to analyze percentiles.
-- **Percentile**: Calculate specific percentiles (0th to 100th) to understand your data's distribution further.
+### Data Statistics
+
+Data Statistics tool swiftly computes key metrics like **mean**, **median**, **mode**, **percentiles**, **quartiles**, and **deciles**, providing a clear snapshot of your dataset's characteristics.
 
 In addition to these core features, this website throws in some extra goodies, including:
 
@@ -22,6 +21,10 @@ In addition to these core features, this website throws in some extra goodies, i
 - **Min**: The minimum value in your data.
 - **Max**: The maximum value in your data.
 
+### Permutation & Combination
+
+Permutation and Combination tool effortlessly calculates the myriad ways elements can be arranged or combined.
+
 ## Tech Stack
 
 - [SvelteKit](https://kit.svelte.dev/)
@@ -30,5 +33,5 @@ In addition to these core features, this website throws in some extra goodies, i
 
 ## Demo
 
-[![Github Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://kh4iri.github.io/data-statistics-calculator/)
-[![View on Stackblitz](https://img.shields.io/badge/View_On_Stackblitz-fff?style=for-the-badge&logo=Stackblitz&logoColor=1389FD)](https://stackblitz.com/edit/data-statistics-calculator)
+[![Github Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://kh4iri.github.io/math-toolbox/)
+[![View on Stackblitz](https://img.shields.io/badge/View_On_Stackblitz-fff?style=for-the-badge&logo=Stackblitz&logoColor=1389FD)](https://stackblitz.com/edit/math-toolbox)

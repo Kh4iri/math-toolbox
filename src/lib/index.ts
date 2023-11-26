@@ -1,9 +1,19 @@
 // place files you want to import through the `$lib` alias in this folder.
 
 type ResultInfo = { formula: string, result: number }
+
 type Quartiles = { Q1: ResultInfo, Q2: ResultInfo, Q3: ResultInfo }
 type Decile = ResultInfo & { position: number, remainder: number }
 type Percentile = Decile
+
+export function clamp(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max);
+}
+
+export function formatNumberToString(num: number): string {
+  const formattedNumber = num.toFixed(5);
+  return formattedNumber.replace(/\.?0*$/, '');
+}
 
 export function getMean(numbers: number[]): ResultInfo {
   if (numbers.length == 0)
@@ -153,4 +163,37 @@ export function getPercentile(sortedNumbers: number[], percentileNumber: number)
 
 function isIndexOutOfRange<T>(array: T[], index: number): boolean {
   return index < 0 || index >= array.length;
+}
+
+export function factorialize(num: number): number {
+  if (num < 0 || isNaN(num))
+    return NaN; // If the number is less than 0, reject it.
+  else if (num === 0)
+    return 1; // If the number is 0, its factorial is 1.
+  else // Otherwise, call the recursive procedure again
+    return (num * factorialize(num - 1));
+}
+
+export function getPermutation(n: number, r: number): ResultInfo {
+  const numerator = factorialize(n);
+  const denominator = factorialize(n - r);
+  const result = numerator / denominator;
+
+  let formula = `^{${n}}P_{${r}} `;
+  formula += `= \\frac{${n}!}{(${n} - ${r})!} `;
+  formula += `= \\frac{${n}!}{${n-r}!} =`;
+
+  return { formula, result };
+}
+
+export function getCombination(n: number, r: number): ResultInfo {
+  const numerator = factorialize(n);
+  const denominator = factorialize(n - r) * factorialize(r);
+  const result = numerator / denominator;
+
+  let formula = `^{${n}}C_{${r}} `;
+  formula += `= \\frac{${n}!}{(${n} - ${r})! \\cdot ${r}!} `;
+  formula += `= \\frac{${n}!}{${n-r}! \\cdot ${r}!} =`;
+
+  return { formula, result };
 }
