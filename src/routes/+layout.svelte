@@ -3,6 +3,9 @@
   import { page } from '$app/stores';
   import { base } from '$app/paths';
   import TailwindIndicator from './TailwindIndicator.svelte';
+
+  console.log('Page URL Pathname:', $page.url.pathname);
+  console.log('Route:', $page.route);
 </script>
 
 <!-- Container -->
