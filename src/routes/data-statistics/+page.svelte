@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getMean, getMedian, getMode } from '$lib';
-  import config from '../../config';
+  import { github } from '$src/configuration';
   import DecileStats from './DecileStats.svelte';
   import PercentileStats from './PercentileStats.svelte';
   import QuartileStats from './QuartileStats.svelte';
@@ -41,7 +41,7 @@
   Data Statistics tool swiftly computes key metrics like mean, median, mode, percentiles, quartiles,
   and deciles, providing a clear snapshot of your dataset's characteristics. Effortlessly analyze your
   data's central tendencies and distribution to make informed decisions in a snap! Check it out on
-  <a href={config.github} class="link link-accent" target="_blank">Github</a>
+  <a href={github} class="link link-accent" target="_blank">Github</a>
 </p>
 
 <div class="divider"></div>

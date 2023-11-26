@@ -10,7 +10,18 @@ const config = {
 	kit: {
 		// Static Adapter Info: https://kit.svelte.dev/docs/adapter-static
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter()
+		adapter: adapter(),
+
+		// By default, the SvelteKit static adapter will generate the website in the
+		// root of the  build  folder. However, GitHub Pages will serve the website from a subfolder.
+		paths: {
+			base: process.env.NODE_ENV === 'production' ? '/math-toolbox' :  ''
+		},
+
+		// https://kit.svelte.dev/docs/configuration#alias
+		alias: {
+			'$src/*': 'src/*'
+		}
 	}
 };
 

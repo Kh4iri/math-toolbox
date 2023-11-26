@@ -1,7 +1,7 @@
 <script lang="ts">
-  import config from '../../config';
-  import Katex from './Katex.svelte';
+  import { github } from '$src/configuration';
   import { clamp, formatNumberToString, getCombination, getPermutation } from '$lib';
+  import Katex from './Katex.svelte';
 
   let error = '';
   let inputStringN: string | null = '12';
@@ -32,7 +32,7 @@
 <p class="mb-3">
   Permutation and Combination tool effortlessly calculates the myriad ways elements can be arranged or combined.
   Explore permutations for ordered sequences or combinations for unordered sets with ease. Check it out on
-  <a href={config.github} target="_blank" class="link link-accent">Github</a>
+  <a href={github} target="_blank" class="link link-accent">Github</a>
 </p>
 
 <div class="divider" />
