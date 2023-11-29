@@ -2,6 +2,7 @@
   import { github } from '$src/configuration';
   import { clamp, formatNumberToString, getCombination, getPermutation } from '$lib';
   import Katex from './Katex.svelte';
+  import Formula from './Formula.svelte';
 
   let error = '';
   let inputStringN: string | null = '12';
@@ -78,7 +79,8 @@
   considering all possible ways without repetition.
 </p>
 
-<div class="mb-3 text-5xl"><Katex math='^nP_r = \frac{'{n!}{(n - r)!}'}'/></div>
+<Formula formula={'^nP_r = \\frac{n!}{(n - r)!}'} />
+
 {#if inputStringN && inputStringR}
   <div class="{error ? 'text-error' : ''}">
     <Katex math={permutation.formula}/>
@@ -93,7 +95,8 @@
   set without considering the order of selection.
 </p>
 
-<div class="mb-3 text-5xl"><Katex math='^nC_r = \frac{'{n!}{(n - r)! \\cdot r!}'}'/></div>
+<Formula formula={'^nC_r = \\frac{n!}{(n - r)! \\cdot r!}'} />
+
 {#if inputStringN && inputStringR}
   <div class="{error ? 'text-error' : ''}">
     <Katex math={combination.formula}/>
