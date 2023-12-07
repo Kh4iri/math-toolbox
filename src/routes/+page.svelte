@@ -1,7 +1,6 @@
 <script lang='ts'>
   import { base } from '$app/paths';
-  import { name, github } from '$src/configuration';
-  import Tool from './MathTool.svelte';
+  import { name, github, tools } from '$src/configuration';
 </script>
 
 <svelte:head>
@@ -18,12 +17,14 @@
 
 <div class="divider my-7">Tools</div>
 
-<Tool href="{base}/data-statistics">
-  <h2 class="text-2xl text-accent font-semibold">Data Statistics</h2>
-  <p>Data Statistics tool swiftly computes key metrics like <b>mean</b>, <b>median</b>, <b>mode</b>, <b>percentiles</b>, <b>quartiles</b>, and <b>deciles</b>, providing a clear snapshot of your dataset's characteristics.</p>
-</Tool>
-
-<Tool href="{base}/permutation-combination">
-  <h2 class="text-2xl text-accent font-semibold">Permutation & Combination</h2>
-  <p>Permutation and Combination tool effortlessly calculates the myriad ways elements can be arranged or combined. </p>
-</Tool>
+{#each tools as tool}
+  <a href='{base}{tool.href}'>
+    <div class="mb-4 p-4 rounded-md bg-base-300 hover:bg-base-200 border
+      border-transparent hover:border-accent transition-all active:scale-95"
+    >
+      <h2 class="text-2xl text-accent font-semibold">{tool.name}</h2>
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      <p>{@html tool.description}</p>
+    </div>
+  </a>
+{/each}
