@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Katex from './Katex.svelte';
+    import Katex from '../Katex.svelte';
     export let formula: string;
 </script>
 

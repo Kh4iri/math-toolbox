@@ -1,7 +1,7 @@
 <script lang="ts">
   import { github } from '$src/configuration';
   import { clamp, formatNumberToString, getCombination, getPermutation } from '$lib';
-  import Katex from './Katex.svelte';
+  import Katex from '../Katex.svelte';
   import Formula from './Formula.svelte';
 
   let error = '';

@@ -1,10 +1,12 @@
 // place files you want to import through the `$lib` alias in this folder.
 
-type ResultInfo = { formula: string, result: number }
+type ResultInfo = { formula: string, result: number };
+export type GroupedData = { min: number, max?: number, freq: number }[];
 
-type Quartiles = { Q1: ResultInfo, Q2: ResultInfo, Q3: ResultInfo }
-type Decile = ResultInfo & { position: number, remainder: number }
-type Percentile = Decile
+type Quartiles = { Q1: ResultInfo, Q2: ResultInfo, Q3: ResultInfo };
+type Decile = ResultInfo & { position: number, remainder: number };
+type Percentile = Decile;
+type MeanGrouped = ResultInfo & { sum: number, totalFreq: number };
 
 export function clamp(num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
@@ -163,6 +165,50 @@ export function getPercentile(sortedNumbers: number[], percentileNumber: number)
 
 function isIndexOutOfRange<T>(array: T[], index: number): boolean {
   return index < 0 || index >= array.length;
+}
+
+export function getMeanGrouped(groupedData: GroupedData): MeanGrouped {
+  let sum = 0;
+  let totalFreq = 0;
+
+  // Calculate the sum of (midpoint * frequency) and total frequency
+  groupedData.forEach(({ min, max, freq }) => {
+    const midpoint = max != null ? (min + max) / 2 : min;
+    sum += midpoint * freq;
+    totalFreq += freq;
+  });
+
+  // Calculate the mean
+  const result = sum / totalFreq;
+  const formula = `Mean = \\frac{\\sum(Mid * Freq)}{Total Freq} = \\frac{${sum}}{${totalFreq}} =`;
+  return { result, formula, sum, totalFreq };
+}
+
+export function getMedianGrouped(groupedData: GroupedData): number {
+  const totalFrequency = groupedData.reduce((a, b) => a + b.freq, 0);
+  const medianPosition = totalFrequency / 2;
+  let cumulativeFrequency = 0;
+
+  for (const { min, max, freq } of groupedData) {
+    const nextCumulativeFreq = cumulativeFrequency + freq;
+
+    if (nextCumulativeFreq > medianPosition) {
+      const intervalSize = max != undefined ? max - min + 1 : 0;
+      const lowerLimit = min;
+
+      const l = lowerLimit - 0.5;
+      const s = intervalSize;
+      const F = cumulativeFrequency;
+      const f = freq;
+      const median = l + s * ((medianPosition - F) / f);
+
+      return median;
+    }
+
+    cumulativeFrequency = nextCumulativeFreq;
+  }
+
+  return NaN; // If median cannot be determined
 }
 
 export function factorialize(num: number): number {

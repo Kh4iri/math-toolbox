@@ -20,7 +20,8 @@ const config = {
 
 		// https://kit.svelte.dev/docs/configuration#alias
 		alias: {
-			'$src/*': 'src/*'
+			'$src/*': 'src/*',
+			'$icons/*': 'src/icons/*'
 		}
 	}
 };
